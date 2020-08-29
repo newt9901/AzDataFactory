@@ -15,13 +15,13 @@ Note that Managed identity makes more sense when a custom built web application 
 
 Steps;
 1. Add an Active Directory Admin to SQL Server. This is needed because SQL Server doesn't let non Active Directory users add Active Directory accounts. So, SQL authentication won't let anyone create an Active Directory user. As discussed before, the Managed Principal is an Active Directory account. Therefore before adding Managed Principal, first, SQL should grant access to Azure Active Directory users.
-2. Create Azure Key vault. To avoid anyone seeing SQL Server credentials, it's best to keep such information in Azure Key Vault. This is very much applicable when the code is saved in GitHub. Key vault should store database connection link as secret; Server=tcp:<<SQL Server Name>>.database.windows.net,1433;Database=<<SQL Database Name>>
+2. Create Azure Key vault. To avoid anyone seeing SQL Server credentials, it's best to keep such information in Azure Key Vault. This is very much applicable when the code is saved in GitHub. Key vault should store database connection link as secret; Server=tcp:<SQL Server Name>.database.windows.net,1433;Database=<SQL Database Name>
 3. In Azure Data Factory Linked Service, select Azure Key Vault and select Managed Identity as Authentication Type. Azure should show the system-assigned managed identity just below the Authentication Type combo box, and the Managed Identity name is the same as Azure Data Factory name.
 4. In this step, Managed Identity is granted SQL database privileges. Connect to SSMS using Azure Active Directory Authentication. First, create a user with the same name as Managed Identity. Then give minimum database privileges. Usually, db_datareader and db_datawriter is sufficient, but because of the truncation command, db_ddladmin is also granted.
 
-CREATE USER <<Managed Identity Name>> FROM EXTERNAL PROVIDER
+CREATE USER <Managed Identity Name> FROM EXTERNAL PROVIDER
 
-ALTER ROLE db_datareader ADD MEMBER <<Managed Identity Name>>
-ALTER ROLE db_datawriter ADD MEMBER <<Managed Identity Name>>
-ALTER ROLE db_ddladmin ADD MEMBER <<Managed Identity Name>>
+ALTER ROLE db_datareader ADD MEMBER <Managed Identity Name>
+ALTER ROLE db_datawriter ADD MEMBER <Managed Identity Name>
+ALTER ROLE db_ddladmin ADD MEMBER <Managed Identity Name>
 
