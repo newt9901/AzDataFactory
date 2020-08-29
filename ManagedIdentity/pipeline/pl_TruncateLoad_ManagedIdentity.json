@@ -24,7 +24,7 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"preCopyScript": {
-							"value": "@{concat('Truncate table ', pipeline().parameters.pl_p_destinationTableName)}",
+							"value": "@{concat('Truncate table ', pipeline().parameters.p_pl_destinationTableName)}",
 							"type": "Expression"
 						},
 						"disableMetricsCollection": false
@@ -71,7 +71,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"p_ds_sourceTablename": {
-								"value": "@pipeline().parameters.pl_p_SourceTableName",
+								"value": "@pipeline().parameters.p_pl_SourceTableName",
 								"type": "Expression"
 							}
 						}
@@ -83,7 +83,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"p_ds_destinationTableName": {
-								"value": "@pipeline().parameters.pl_p_destinationTableName",
+								"value": "@pipeline().parameters.p_pl_destinationTableName",
 								"type": "Expression"
 							}
 						}
