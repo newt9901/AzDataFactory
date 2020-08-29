@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"ds_p_destinationTableName": {
+			"p_ds_destinationTableName": {
 				"type": "string",
 				"defaultValue": "DestinationTable"
 			}

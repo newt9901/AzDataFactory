@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"ds_p_sourceTablename": {
+			"p_ds_sourceTablename": {
 				"type": "string",
 				"defaultValue": "SourceTable"
 			}
