@@ -1,9 +1,10 @@
 {
-	"name": "TruncateLoad",
+	"name": "pl_TruncateLoad_ManagedIdentity",
 	"properties": {
+		"description": "this pipeline uses managed identity to connect to link services.",
 		"activities": [
 			{
-				"name": "truncateLoadAzureSQL",
+				"name": "ac_TruncateLoad_AzureSQL",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -23,7 +24,7 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"preCopyScript": {
-							"value": "@{concat('Truncate table ', pipeline().parameters.pl_p_destinationTableName)}",
+							"value": "@{concat('Truncate table ', pipeline().parameters.p_pl_destinationTableName)}",
 							"type": "Expression"
 						},
 						"disableMetricsCollection": false
@@ -69,8 +70,8 @@
 						"referenceName": "sourceTable",
 						"type": "DatasetReference",
 						"parameters": {
-							"ds_p_sourceTablename": {
-								"value": "@pipeline().parameters.pl_p_SourceTableName",
+							"p_ds_sourceTablename": {
+								"value": "@pipeline().parameters.p_pl_SourceTableName",
 								"type": "Expression"
 							}
 						}
@@ -81,8 +82,8 @@
 						"referenceName": "destinationTable",
 						"type": "DatasetReference",
 						"parameters": {
-							"ds_p_destinationTableName": {
-								"value": "@pipeline().parameters.pl_p_destinationTableName",
+							"p_ds_destinationTableName": {
+								"value": "@pipeline().parameters.p_pl_destinationTableName",
 								"type": "Expression"
 							}
 						}
@@ -91,11 +92,11 @@
 			}
 		],
 		"parameters": {
-			"pl_p_SourceTableName": {
+			"p_pl_SourceTableName": {
 				"type": "string",
 				"defaultValue": "SourceTable"
 			},
-			"pl_p_destinationTableName": {
+			"p_pl_destinationTableName": {
 				"type": "string",
 				"defaultValue": "Destinationtable"
 			}

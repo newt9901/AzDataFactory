@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"ds_p_sourceTablename": {
+			"p_ds_sourceTablename": {
 				"type": "string",
 				"defaultValue": "SourceTable"
 			}
@@ -30,7 +30,7 @@
 		"typeProperties": {
 			"schema": "dbo",
 			"table": {
-				"value": "@dataset().ds_p_sourceTablename",
+				"value": "@dataset().p_ds_sourceTablename",
 				"type": "Expression"
 			}
 		}
