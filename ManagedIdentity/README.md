@@ -1,4 +1,4 @@
-# Connecting to Azure resources securly using Managed Identity
+# Connecting to Azure resources securely using Managed Identity
 
 Accoding to Microsoft, "A common challenge when building cloud applications is how to manage the credentials in your code for authenticating to cloud services. Keeping the credentials secure is an important task. Ideally, the credentials never appear on developer workstations and aren't checked into source control. Azure Key Vault provides a way to securely store credentials, secrets, and other keys, but your code has to authenticate to Key Vault to retrieve them.
 
