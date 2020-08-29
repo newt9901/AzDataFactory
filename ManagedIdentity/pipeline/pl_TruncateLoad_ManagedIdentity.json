@@ -1,9 +1,10 @@
 {
-	"name": "TruncateLoad",
+	"name": "pl_TruncateLoad_ManagedIdentity",
 	"properties": {
+		"description": "this pipeline uses managed identity to connect to link services.",
 		"activities": [
 			{
-				"name": "truncateLoadAzureSQL",
+				"name": "ac_TruncateLoad_AzureSQL",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
