@@ -1,0 +1,17 @@
+{
+	"name": "motorReader",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqldbLink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "motorReading"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

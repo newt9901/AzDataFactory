@@ -1,0 +1,39 @@
+{
+	"name": "sourceTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLinkSource",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ds_p_sourceTablename": {
+				"type": "string",
+				"defaultValue": "SourceTable"
+			}
+		},
+		"folder": {
+			"name": "Database"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EmpID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "EmpName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().ds_p_sourceTablename",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

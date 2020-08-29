@@ -1,0 +1,33 @@
+{
+	"name": "rawfiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "rawlinkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "raw",
+				"fileSystem": "raw"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"motorid": {
+					"type": "string"
+				},
+				"pressure": {
+					"type": "integer"
+				},
+				"temperature": {
+					"type": "integer"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
