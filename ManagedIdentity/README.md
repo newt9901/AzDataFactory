@@ -19,9 +19,9 @@ Steps;
 3. In Azure Data Factory Linked Service, select Azure Key Vault and select Managed Identity as Authentication Type. Azure should show the system-assigned managed identity just below the Authentication Type combo box, and the Managed Identity name is the same as Azure Data Factory name.
 4. In this step, Managed Identity is granted SQL database privileges. Connect to SSMS using Azure Active Directory Authentication. First, create a user with the same name as Managed Identity. Then give minimum database privileges. Usually, db_datareader and db_datawriter is sufficient, but because of the truncation command, db_ddladmin is also granted.
 
-CREATE USER <<Managed Identity Name>> FROM EXTERNAL PROVIDER;
+CREATE USER <<Managed Identity Name>> FROM EXTERNAL PROVIDER
 
-ALTER ROLE db_datareader ADD MEMBER <<Managed Identity Name>>;
-ALTER ROLE db_datawriter ADD MEMBER <<Managed Identity Name>>;
-ALTER ROLE db_ddladmin ADD MEMBER <<Managed Identity Name>>;
+ALTER ROLE db_datareader ADD MEMBER <<Managed Identity Name>>
+ALTER ROLE db_datawriter ADD MEMBER <<Managed Identity Name>>
+ALTER ROLE db_ddladmin ADD MEMBER <<Managed Identity Name>>
 
