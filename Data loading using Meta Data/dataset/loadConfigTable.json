@@ -1,0 +1,29 @@
+{
+	"name": "loadConfigTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlLinkSource",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Database"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LoadConfigurationID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TableName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LoadConfiguration"
+		}
+	}
+}
