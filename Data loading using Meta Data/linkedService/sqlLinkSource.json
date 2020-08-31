@@ -1,6 +1,5 @@
 {
 	"name": "sqlLinkSource",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureSqlDatabase",
@@ -11,8 +10,9 @@
 					"referenceName": "kv9901",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "dblink"
+				"secretName": "databaseLink"
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
