@@ -1,6 +1,36 @@
 {
 	"name": "pl_dataLoadWithDataFlow",
 	"properties": {
+		"activities": [
+			{
+				"name": "df_LoadEmp",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "df_LoadEmp",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"empsource": {
+								"p_ds_sourceTablename": "SourceTable"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					}
+				}
+			}
+		],
 		"annotations": []
 	}
 }
