@@ -10,11 +10,22 @@
 						"type": "DatasetReference"
 					},
 					"name": "empsource"
+				},
+				{
+					"dataset": {
+						"referenceName": "destinationTable",
+						"type": "DatasetReference"
+					},
+					"name": "empdest"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
-			"script": "parameters{\n\tp_sourceTableName as string\n}\nsource(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empsource"
+			"transformations": [
+				{
+					"name": "Exists1"
+				}
+			],
+			"script": "source(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empsource\nsource(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empdest\nempsource exists(ERROR_FUNCTION('') == ERROR_FUNCTION(''),\n\tnegate:false,\n\tbroadcast: 'auto')~> Exists1"
 		}
 	}
 }

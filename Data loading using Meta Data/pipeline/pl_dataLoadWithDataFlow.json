@@ -20,7 +20,10 @@
 						"type": "DataFlowReference",
 						"datasetParameters": {
 							"empsource": {
-								"p_ds_sourceTablename": "SourceTable"
+								"p_ds_sourceTablename": "empSource"
+							},
+							"empdest": {
+								"p_ds_destinationTableName": "empDestination"
 							}
 						}
 					},
