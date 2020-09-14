@@ -31,6 +31,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"p_pl_SourceTableName": {
+				"type": "string",
+				"defaultValue": "empSource"
+			}
+		},
 		"annotations": []
 	}
 }
