@@ -22,10 +22,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "Exists1"
+					"name": "checkEmpIDAvailability"
 				}
 			],
-			"script": "source(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empsource\nsource(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empdest\nempsource exists(ERROR_FUNCTION('') == ERROR_FUNCTION(''),\n\tnegate:false,\n\tbroadcast: 'auto')~> Exists1"
+			"script": "source(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empsource\nsource(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empdest\nempsource split(ERROR_FUNCTION(''),\n\tdisjoint: false) ~> checkEmpIDAvailability@(, )"
 		}
 	}
 }
