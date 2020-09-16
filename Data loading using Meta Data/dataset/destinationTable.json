@@ -2,7 +2,7 @@
 	"name": "destinationTable",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "sqlLinkSource",
+			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
