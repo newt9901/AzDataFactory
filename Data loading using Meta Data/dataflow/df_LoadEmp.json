@@ -22,10 +22,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "checkEmpIDAvailability"
+					"name": "Join1"
 				}
 			],
-			"script": "source(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empsource\nsource(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empdest\nempsource split(ERROR_FUNCTION(''),\n\tdisjoint: false) ~> checkEmpIDAvailability@(, )"
+			"script": "source(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empsource\nsource(output(\n\t\tEmpID as integer,\n\t\tEmpName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> empdest\nempdest, empsource join(empdest@EmpID == empsource@EmpID,\n\tjoinType:'left',\n\tbroadcast: 'auto')~> Join1"
 		}
 	}
 }
