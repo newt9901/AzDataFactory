@@ -24,6 +24,9 @@
 							},
 							"empdest": {
 								"p_ds_destinationTableName": "empDestination"
+							},
+							"sink1": {
+								"p_ds_destinationTableName": "DestinationTable"
 							}
 						}
 					},
